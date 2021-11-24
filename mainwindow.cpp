@@ -204,6 +204,7 @@ void MainWindow::updateInfo(QStringList info1, QStringList info2)
 {
     // 刷新液冷源工作状态
     QString workState = myHelper::ReversalStr(info1[0]);
+
     //qDebug() << "液冷源工作状态 : "<< info1[0] << " = " << workState;
     setLEValGreen(ui->LE_SW1, QString(workState[0]));
     setLEValGreen(ui->LE_SW2, QString(workState[1]));
@@ -302,6 +303,7 @@ bool MainWindow::sendTcpSocket(QString sendData)
         QMessageBox::information(this,"提示","输入的十六进制字符串有误，请重新输入");
         return false;
     }
+    qDebug() << byteArray;
     if (m_tcpSocket)
     {
         m_tcpSocket->write(byteArray);
